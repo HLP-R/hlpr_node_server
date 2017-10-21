@@ -12,7 +12,7 @@ Expected directory structure of a module:
 
 - `web/` - This should be contained in any ROS package that wants to define the express files that follow. If this is not present, then the following subfolders are assumed to exist in the top-level directory.
 - `http/` - This is where the http endpoints live
-- `static/` - This is where the static files will be searched and shared
+- `static/ | public/` (in that order) - This is where the static files will be searched and shared
 - `ws/` - This is where websocket endpoints are defined
 - Everything else, is upto you!
 
@@ -22,4 +22,6 @@ Bee in the bonnet:
 
 Things to consider:
 
-- Endpoint index name should match the name of the submodule by default. This should be configurable.
+- Endpoint index name should match the name of the app by default. This should be configurable.
+- Update the Dockerfile to appropriately expect the correct volume.
+- Need to add instructions on how to setup the docker system on vector2

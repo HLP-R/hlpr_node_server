@@ -1,0 +1,29 @@
+{
+  "name": "hlpr_node_server",
+  "version": "0.0.1",
+  "private": true,
+  "engines": {
+    "node": "6.x",
+    "npm": "3.x"
+  },
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "debug": "DEBUG=* NODE_ENV=development nodemon --watch . -e js,html --delay 3 server.js"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "compression": "^1.7.1",
+    "debug": "^3.1.0",
+    "express": "^4.16.2",
+    "serve-favicon": "^2.4.5",
+    "ws": "^3.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HLP-R/hlpr_node_server"
+  }
+}
