@@ -8,6 +8,7 @@
   },
   "main": "server.js",
   "scripts": {
+    "preinstall": "node bin/preinstall",
     "start": "node server.js",
     "debug": "DEBUG=* NODE_ENV=development nodemon --watch . -e js,html --delay 3 server.js"
   },

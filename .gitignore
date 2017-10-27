@@ -1,6 +1,7 @@
 # Do not commit anything in the apps directory
 apps/**
 !apps/.keep
+build.json
 
 # Logs
 logs
