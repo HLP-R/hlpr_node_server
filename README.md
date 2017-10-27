@@ -25,3 +25,9 @@ Things to consider:
 - Endpoint index name should match the name of the app by default. This should be configurable.
 - Update the Dockerfile to appropriately expect the correct volume.
 - Need to add instructions on how to setup the docker system on vector2
+
+Command to start docker:
+
+```
+docker run --name hlpr-server -i -t -v $(pwd):/usr/src -p 9090:9090 -p 11311:11311 -p 8000:8000 -p 8080:8080 -p 9999:9999 -w /usr/src node:6 bash
+```
