@@ -20,6 +20,7 @@
     "compression": "^1.7.1",
     "debug": "^3.1.0",
     "express": "^4.16.2",
+    "rosnodejs": "^2.1.1",
     "serve-favicon": "^2.4.5",
     "ws": "^3.2.0"
   },

@@ -6,7 +6,7 @@ This package contains the code for the node.js server that will be on the HLP-R 
 
 ## Notes
 
-Default port for ROS Bridge is 9090. Other potential ports: 11311, 8000, 8080, 80, 9999.
+Default port for ROS Bridge is 9090. Other potential ports: 8000, 8080, 9999.
 
 Expected directory structure of a module:
 
@@ -19,15 +19,9 @@ Expected directory structure of a module:
 Bee in the bonnet:
 
 - Justin Huang's polymer code does not follow this paradigm. Possible solution: assume that anything that any package with a top-level html or js file contains only static files that must be served.
+- Can't use docker because we need the ROS workspace for rosnodejs to work effectivelt. (doh)
 
 Things to consider:
 
 - Endpoint index name should match the name of the app by default. This should be configurable.
-- Update the Dockerfile to appropriately expect the correct volume.
 - Need to add instructions on how to setup the docker system on vector2
-
-Command to start docker:
-
-```
-docker run --name hlpr-server -i -t -v $(pwd):/usr/src -p 9090:9090 -p 11311:11311 -p 8000:8000 -p 8080:8080 -p 9999:9999 -w /usr/src node:6 bash
-```
