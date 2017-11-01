@@ -39,7 +39,10 @@ app.use('/static', express.static(path.join(__dirname, 'static')));
 // TODO: Add an apps static files
 
 // TODO: Setup the http route handlers from the apps
-app.use('/teleop', require('./apps/hlpr_web_teleop/routes'));
+app.use('/teleop', require('./apps/hlpr_web_teleop/routes')({
+    path: '/teleop',
+    rosnodes: teleop_ros
+}));
 
 // Set the Express server settings and create the Http Server
 var port = process.env.PORT || 8000;
