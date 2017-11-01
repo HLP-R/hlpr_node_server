@@ -17,7 +17,7 @@ var init_promise = rosnodejs.initNode('hlpr_node_server');
 // TODO: Parse out the ros nodes
 var teleop_ros = [ require('./apps/hlpr_web_teleop/ros/teleop') ];
 
-// Initialize the rosnodes
+// TODO: Initialize the rosnodes
 Promise.all([msgs_promise, init_promise])
     .then(() => {
         for (var i = 0; i < teleop_ros.length; i++) {
