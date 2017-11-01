@@ -21,21 +21,18 @@ app.use('/static', express.static(path.join(__dirname, 'static')));
 
 // TODO: Parse out the static file dirs in the apps
 
-// Setup the route handlers from the apps
+// TODO: Setup the http route handlers from the apps
 app.use('/teleop', require('./apps/hlpr_web_teleop/routes'));
 
-// TODO: Get the ws handlers from the apps
-
-// TODO: Combine the http and ws handlers together
-
-// Serve the combined server
+// Set the Express server settings and create the Http Server
 var port = process.env.PORT || 8000;
-var address = process.env.IP_ADDR || '0.0.0.0';
+var host = process.env.HOST || '0.0.0.0';
 app.set('port', port);
-app.set('address', address);
+app.set('host', host);
 
+// Start the server
 var server = http.createServer(app);
-server.listen(port, address);
+server.listen(port, host);
 
 server.on('error', function(error) {
   if (error.syscall !== 'listen') {
@@ -62,5 +59,11 @@ server.on('error', function(error) {
 });
 server.on('listening', function() {
     var addr = server.address();
-    debug('Listening on ' + addr);
+    debug('Listening on ' + addr.port);
+});
+
+// TODO: Set the ws handlers from the apps
+var teleopRouter = new require('./apps/hlpr_web_teleop/ws')({
+    server: server,
+    path: '/teleop'
 });
