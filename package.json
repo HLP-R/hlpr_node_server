@@ -30,6 +30,7 @@
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-router-dom": "^4.2.2",
+    "rosnodejs": "^2.1.1",
     "serve-favicon": "^2.4.5",
     "ws": "^3.2.0"
   },

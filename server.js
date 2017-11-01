@@ -9,6 +9,23 @@ var http = require('http');
 // Debug
 var debug = require('debug')('server');
 
+// Start up ROS
+const rosnodejs = require('rosnodejs');
+var msgs_promise = rosnodejs.loadAllPackages();
+var init_promise = rosnodejs.initNode('hlpr_node_server');
+
+// TODO: Parse out the ros nodes
+var teleop_ros = [ require('./apps/hlpr_web_teleop/ros/teleop') ];
+
+// Initialize the rosnodes
+Promise.all([msgs_promise, init_promise])
+    .then(() => {
+        for (var i = 0; i < teleop_ros.length; i++) {
+            var api = teleop_ros[i];
+            api.initialize(rosnodejs.nh);
+        }
+    }).catch(console.error);
+
 // Create the server
 var app = express();
 
@@ -19,7 +36,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/static', express.static(path.join(__dirname, 'static')));
 
-// TODO: Parse out the static file dirs in the apps
+// TODO: Add an apps static files
 
 // TODO: Setup the http route handlers from the apps
 app.use('/teleop', require('./apps/hlpr_web_teleop/routes'));
@@ -65,5 +82,6 @@ server.on('listening', function() {
 // TODO: Set the ws handlers from the apps
 var teleopRouter = new require('./apps/hlpr_web_teleop/ws')({
     server: server,
-    path: '/teleop'
+    path: '/teleop',
+    rosnodes: teleop_ros
 });
