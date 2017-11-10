@@ -25,3 +25,5 @@ Things to consider:
 
 - Endpoint index name should match the name of the app by default. This should be configurable.
 - Need to add instructions on how to setup the docker system on vector2
+
+Installing nvm and node globally: [link](http://www.marcominetti.net/personal/blog/2015/09/install-system-wide-node-js-with-nvm-the-painless-way)
